@@ -1,0 +1,130 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #a32a87; 
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: white;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    width: 100%;
+    max-width: 600px; 
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(100px, 130px)); 
+    grid-gap: 15px;
+    margin-bottom: 20px;
+    perspective: 1000px;
+}
+
+.card {
+    width: 100%; 
+    aspect-ratio: 1 / 1; 
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.card.active {
+    transform: rotateY(180deg);
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; 
+    backface-visibility: hidden; 
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-back {
+    background-color: #f78fb3;
+    border: 3px solid rgba(255,255,255,0.2);
+    z-index: 2; 
+}
+
+.card-front {
+    background-color: white;
+    transform: rotateY(180deg); 
+    z-index: 1;
+    overflow: hidden;
+}
+
+.card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#status {
+    height: 60px;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#start-btn {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #a32a87;
+    background-color: white;
+    border: none;
+    border-radius: 50px; 
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+#start-btn:hover {
+    transform: scale(1.05);
+    background-color: #f0f0f0;
+}
+
+#start-btn:active {
+    transform: scale(0.95);
+}
+
+#status {
+    height: 60px; 
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-top: 10px;   
+    margin-bottom: 10px; 
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.controls {
+    margin-top: 10px; 
+}
+
+#status.your-turn {
+    color: #ffd700; 
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}
+
